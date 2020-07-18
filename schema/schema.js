@@ -135,6 +135,14 @@ const rootQuery = new GraphQLObjectType({
         return _.find(usersData, { id: args.id });
       },
     },
+
+    users: {
+      type: GraphQLList(UserType),
+      resolve(parent, args) {
+        return usersData;
+      },
+    },
+
     hobby: {
       type: hobbyType,
       args: {
@@ -144,6 +152,14 @@ const rootQuery = new GraphQLObjectType({
         return _.find(hobbiesData, { id: args.id });
       },
     },
+
+    hobbies: {
+      type: GraphQLList(hobbyType),
+      resolve(parent, args) {
+        return hobbiesData;
+      },
+    },
+
     post: {
       type: PostType,
       args: {
@@ -151,6 +167,13 @@ const rootQuery = new GraphQLObjectType({
       },
       resolve(parent, args) {
         return _.find(postsData, { id: args.id });
+      },
+    },
+
+    posts: {
+      type: GraphQLList(PostType),
+      resolve(parent, args) {
+        return postsData;
       },
     },
   },
