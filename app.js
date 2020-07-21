@@ -3,6 +3,9 @@ const graphqlHTTP = require("express-graphql");
 const mongoose = require("mongoose");
 const config = require("./config");
 
+const schema = require("./schema/schema");
+const schemaTest = require("./schema/schema_types");
+
 const app = express();
 
 mongoose.connect(
@@ -23,7 +26,7 @@ app.use(
   "/graphql",
   graphqlHTTP.graphqlHTTP({
     graphiql: true,
-    schema,
+    schema: schemaTest,
   })
 );
 
